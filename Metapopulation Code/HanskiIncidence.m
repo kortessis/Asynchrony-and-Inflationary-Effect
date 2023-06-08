@@ -16,7 +16,7 @@ Uext = normcdf(Xext);
 Ucol = normcdf(Xcol);
 
 O = zeros(patches,tsteps);
-O(:,1) = rand(patches,1) > (1 - init_frac_occ);
+O(1:round(init_frac_occ*patches),1) = 1;
 N = nan(1, tsteps);
 
 for t = 2:tsteps

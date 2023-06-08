@@ -111,6 +111,7 @@ pt_colors = pt_colors(2:end-1,:);
 
 % Plot the time to extinction information
 figure;
+subplot(1,2,1)
 semilogy(2,1); xlim([0,1]); ylim([1,max(max(ext_time))]);
 grid on; hold on;
 for i = 1:length(rho_ext)
@@ -131,7 +132,7 @@ ax.YTickLabels = [1, 100, 10000, 1000000];
 
 
 % Plot the conditional mean population size
-figure;
+subplot(1,2,2)
 plot(2,1); xlim([0,1]); ylim([0,1]);
 hold on;
 for i = 1:length(rho_ext)
@@ -147,4 +148,4 @@ hold off;
 ax = gca; ax.FontSize = 25; ax.FontName = 'Times New Roman';
 xlabel('Correlation among patch extinction events, \rho_{\itE}');
 ylabel('Conditional Mean Occupancy');
-title('Asynchrony drastically reduces mean occupancy');
+title('Asynchrony minimially affects mean occupancy');
