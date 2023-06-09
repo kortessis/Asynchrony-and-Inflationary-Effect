@@ -47,7 +47,7 @@ patches = 25;
 % Model parameters for colonization and extinction probabilities
 rho_col = 0;
 rho_ext = linspace(0.05,0.95,10);
-ext_prob = 0.25;
+ext_prob = 0.4;
 c = 0.5*patches;
 
 % Number of time steps to evaluate extinction
@@ -83,7 +83,7 @@ for i = 1:length(rho_ext)
             % Run the HanskiIncidence function. We set seed = nan to make
             % the sequence of extinction and colonization events differ
             % over time. We only consider tsteps at a time.
-            O = HanskiIncidence(rho_col, rho_ext(i), patches, tsteps, nan, ...
+            O = ModifiedIncidence(rho_col, rho_ext(i), patches, tsteps, nan, ...
                 ext_prob, c, N(end)/patches);
 
             % Figure out population size and keep track.
