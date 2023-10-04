@@ -1,12 +1,15 @@
 clear
 clc
 
+colors = viridis(4);
+colors = colors(2:3,:);
+
 rho_ext = [0,0.75];
 rho_col = 0;
-patches = 100;
-tsteps = 200;
-seed = 16;
-ext_prob = 0.25;
+patches = 25;
+tsteps = 175;
+seed = 7;
+ext_prob = 0.4;
 c = 0.5*patches;
 init_frac_occ = 0.5;
 
@@ -17,10 +20,14 @@ ax = gca; ax.FontSize = 20; ax.FontName = 'Times New Roman';
 hold on;
 
 for i = 1:2
-    O = HanskiIncidence(rho_col, rho_ext(i), patches, tsteps, seed,...
+    O = ModifiedIncidence(rho_col, rho_ext(i), patches, tsteps, seed,...
         ext_prob, c, init_frac_occ);
     N = ones(1,patches)*O;
-    plot(1:tsteps, N/patches, '-o', 'Color', 0.75*ones(1,3));
+    p = plot(1:tsteps, N/patches, '-o', 'Color', colors(i,:));
+    p.MarkerSize = 6;
+    p.MarkerEdgeColor = 'black';
+    p.MarkerFaceColor = colors(i,:);
+    p.LineWidth = 3;
 end
 hold off;
 
