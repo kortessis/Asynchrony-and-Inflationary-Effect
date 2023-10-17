@@ -1,11 +1,8 @@
-function O = ModifiedIncidence(rho_col, rho_ext, patches, tsteps, seed, ...
-    ext_prob, c, init_frac_occ)
-% This is Hanski's incidence model but with two changes. One, the 
-% colonization probability now depends on the number of occupied patches
-% rather the square of the number of occupied patches. Two, all the patches
-% are assumed to be of equal size and equally connected to one another. As
-% such, this is a reasonable finite patch model version of the Lenski
-% metapopulation model.
+function O = LevinsMetaPop(rho_col, rho_ext, patches, tsteps, deltat, ...
+    seed, e, c, init_frac_occ)
+% This is a discrete-time version of Lenski's metapopulation model, with
+% the flexibility that we can consider correlated extinction and
+% colonization probabilities among patches. 
 
 if ~isnan(seed)
     rng(seed);
@@ -27,7 +24,8 @@ N = nan(1, tsteps);
 
 for t = 2:tsteps
     N(t-1) = sum(O(:,t-1));
-    col_prob = exp(-N(t-1)/patches*c*);
+    col_prob = 1-exp(-c*deltat*N(t-1)/patches);
+    ext_prob = 1-exp(-e*deltat);
 
     Extinct_Patches = O(:,t-1) == 0;
     Occupied_Patches = O(:,t-1) == 1;
