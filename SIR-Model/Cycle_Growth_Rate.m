@@ -62,7 +62,3 @@ xlabel('Fraction Moving Per Day')
 ylabel('Asynchrony, \Omega')
 set(gca, {'FontSize', 'FontName'}, {20, 'Times New Roman'})
 
-figure()
-colormap(viridis)
-colorbar()
-
