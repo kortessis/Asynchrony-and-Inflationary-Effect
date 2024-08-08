@@ -6,10 +6,10 @@ This repository contains code used to produce the results and figures found in t
 All the code and figures are produced in [Matlab 2023b](https://www.mathworks.com/products/new_products/release2023b.html), but the code uses basic functions from Matlab that should be functional in many Matlab versions. Matlab requires a license, but a basic, free version is available at https://www.mathworks.com/products/matlab-online/matlab-online-versions.html that should be sufficient to run this code and make modifications, if interested.
 
 ## Repository Contents
-The code is separated into four folders that represent the code to run different models and analyses used in the paper. Below is a brief description of each. Extra detail about each model and analysis can be found in the main text of the manuscript. 
+The repository has two main folders, `src` and `fig`, that contain, respectively, source code to run models and generate figures in the manuscript, and the produced figures. Within each of these main folders are four folders that organize source code and figures according to the model (or analysis) used in the paper. Below is a brief description of each sub-folder. Extra detail about each model and analysis can be found in the main text of the manuscript. 
 
 ### "Metapopulation Code" folder. 
-Code to simulate the finite patch Levins metapopulation model can be found in the "Metapopulations" folder. There you will find the code to reproduce figures 2 and 3 of the main text and the code associated with the reaction norm approach described in the supplement. 
+This folder contains the code used to produce figures 2 and 3 of the main text, and the code associated with the reaction norm approach described in the supplement. This code relates to a finite-patch version of the Levins metapopulation model where extinction events have some correlation, which we call \rho<sub>E<\sub>.
 
 ### "TwoPatch Model" folder.
 Code to simulate the source-sink model can be found in the folder "TwoPatch Model". There you will find the code to reproduce figure 4.
