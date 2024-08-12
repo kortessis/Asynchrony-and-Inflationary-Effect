@@ -41,20 +41,14 @@ O = zeros(patches,tsteps);
 % Initialize occupancy given the initial fraction occupied.
 O(1:round(init_frac_occ*patches),1) = 1;
 
-% Create a vector to hold number occupied at each time step.
+% 
 N = nan(1, tsteps);
 
-% Loop over time
 for t = 2:tsteps
-    % Calculate occupied patches
     N(t-1) = sum(O(:,t-1));
-
-    % Calculate small time extinction and colonization probabilities
     col_prob = 1-exp(-c*deltat*N(t-1)/patches);
     ext_prob = 1-exp(-e*deltat);
 
-    % Find which patches are extinct and occupied and determine whether
-    % they change state based on the latent variables Ucol and Uext
     Extinct_Patches = O(:,t-1) == 0;
     Occupied_Patches = O(:,t-1) == 1;
     O(Extinct_Patches,t) = Ucol(t-1,Extinct_Patches) < col_prob;
