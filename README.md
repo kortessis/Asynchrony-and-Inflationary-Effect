@@ -13,7 +13,7 @@ This folder contains the code used to produce figures 2 and 3 of the main text, 
 
 1. **LevinsMetaPop.m**. 
 Description: This is a function that simulates the stochastic, finite patch version of the Levins model illustrated in the main text and detailed in the supplementary material, section S2. The goal of this model is to illustrate the importance of correlated patch extinctions on model behavior. This function takes correlations, simulation length, number of patches, and average extinction and colonization rates as inputs. The output is a matrix of occupancy of the different patches across the specified time inputs. 
-Dependencies: None
+Dependencies: None 
 
 2. **LevinsMetaPopSim.m**
 Description: Code to simulate the stochastic, finite-patch model in two situations. The first is one to illustrate dynamics of the model in the case of uncorrelated extinctions and compare that with the case of correlated extinctions. This comparison is made across two different patch numbers. The output is given by figure 2 of the main text. The second part of the code simulates the model across multiple correlations in extinction rates. It then calculates extinction times and conditional mean occupancy. This is to illustrate that the main effect of spatiotemporal heterogeneity in the model is to stabilize dynamics and increase persistence, rather than enhance population size, on average. The code also plots the results. The results are in figure 3 of the main text. Simulation details are in supplement S2. 
