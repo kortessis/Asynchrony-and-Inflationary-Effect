@@ -28,30 +28,41 @@ figure()
 % Make some diagrams showing the global growth rate
 cycle_length = 60; % in units of days
 
+% Movement fraction to simulate over
 fraction_move_per_day = linspace(0,0.05,25);
+% Convert to movement rate
 m = -log(1 - fraction_move_per_day);
+% Overlaps to simulate over
 overlap = linspace(0,1,25);
 
+% Base epidemiological parameters
 beta0 = 0.375;
 inf_duration = 4.5;
 gamma = 1/inf_duration;
 epsilon = 0.95;
 
+% Calculate high and low density per-capita growth rates for the infectious
+% class
 rhi = beta0 - gamma;
 rlo = beta0*(1-epsilon) - gamma;
 
+% Create vector to store calculations of meatpopualtion growth rate values
 global_r = zeros(length(m), length(overlap));
 
+% Loop over movement and overlap values. Use the function "TwoPatch_Global"
+% to calculate the metapopulation growth rates.
 for i = 1:length(m)
     for j = 1:length(overlap)
         global_r(i,j) = TwoPatch_Global_r(rhi, rlo, m(i), overlap(j), cycle_length);
     end
     
+    % Update progress as code runs along.
     if any(i == 10:10:length(m))
         disp(i/length(m))
     end
 end
 
+% Plot output
 s = contourf(fraction_move_per_day, overlap, global_r');
 colormap(viridis)
 hold on

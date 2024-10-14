@@ -43,8 +43,8 @@ for k = 1:2
     % Within each subpanel, we simulation over two values of the rho_E
     % value.
     for i = 1:2
-        O = LevinsMetaPop(rho_col, rho_ext_vec(i), patches(k), tsteps, deltat, ...
-            seed(k), e, c, init_frac_occ);
+        O = LevinsMetaPop(rho_col, rho_ext_vec(i), patches(k), tsteps, ...
+            deltat, seed(k), e, c, init_frac_occ);
         % We take the occupancy patterns of all patches to get the time
         % series of fraction of patches occupied. 
         N = ones(1,patches(k))*O;

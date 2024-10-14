@@ -156,10 +156,10 @@ ylabel('Extinction');
 title('Patch 1 Reaction Norm')
 ax = gca; ax.FontSize = FtSize; ax.FontName = FtName;
 
-% For patch 2
 nexttile([1,1])
 plot(X, Ext, 'LineWidth', 3);
 hold on;
+
 scatter(Yrand, Ext2rand, 'filled', 'o');
 hold off;
 xlabel('Environmental Factor in patch 2, {\itX}_2');
@@ -167,7 +167,6 @@ ylabel('Extinction');
 title('Patch 2 Reaction Norm')
 ax = gca; ax.FontSize = FtSize; ax.FontName = FtName;
 
-% Now show the pattern of extinction over time in teh two patches
 nexttile([1,2])
 image(1:pts, [1,2], [Ext1rand,Ext2rand]', 'CDataMapping','scaled')
 colormap('bone')
@@ -177,6 +176,7 @@ yline(1.5, 'Color', 0.25*ones(1,3), 'LineWidth',2);
 xline(0.5+[0:pts], 'Color', 0.25*ones(1,3), 'LineWidth',2)
 hold off;
 xlabel('Time'); ylabel('Patch'); 
+
 title(["Extinction State, Kendall's \rho = ",num2str(rho)])
 ax = gca; ax.FontSize = FtSize; ax.FontName = FtName;
 

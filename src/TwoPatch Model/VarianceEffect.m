@@ -38,7 +38,8 @@ for i = 1:length(sigmar)
     for t = 2:gen
         N(t) = N(t-1).*exp(r(t-1)) + I;
     end
-
+    
+    v = 
     semilogy(1:gen, N, 'Color', colors(i,:), 'LineWidth', 2);
     arthN(i) = mean(N);
     geomN(i) = exp(mean(log(N)));
