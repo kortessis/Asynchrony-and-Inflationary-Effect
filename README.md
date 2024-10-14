@@ -23,6 +23,10 @@ Dependencies: LevinsMetaPop.m and viridis.m
 Description: A script that illustrates the reaction norm copula approach to creating correlated extinction events in multiple patches. The approach relies on correlating normal random variables, transforming them to uniform random variables, and then transforming them to random variables with the support of interest. The stochastic Levins model used in the manuscript requires correlated Bernoulli events (extinction/persistence) across many patches. The approach outlined here illustrates how these correlated Bernoulli variables are produced. The mathematical details are outlined in the supplementary material S2 and the code produces Figures S1 and S2. 
 Dependencies: viridis.m
 
+4. **viridis.m**
+Description: A colormap.
+Dependencies: None 
+
 ### "TwoPatch Model" folder.
 Code to simulate the source-sink model can be found in the folder "TwoPatch Model". In the src folder, you will find two code files:
 
