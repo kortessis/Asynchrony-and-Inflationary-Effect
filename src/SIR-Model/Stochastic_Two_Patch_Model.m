@@ -76,35 +76,41 @@ for i = 1:length(overlap)
     I = zeros(period*num_per, 2);
     I(1,:) = I_init;
 
+    % Simulates growth in discrete time at each time point.
     for t = 2:period*num_per
         Iprime = lambdat(t-1,:).*I(t-1,:);
         I(t,:) = Iprime*[1-m, m; m, 1-m];
         cum_I(t) = cum_I(t-1) + sum(I(t,:));
     end
 
+    % Plotting parameters
     if overlap(i) == 1
         FontType = '--';
     else
         FontType = '-';
     end
 
+    % Plot dynamics of infectious class over time
     figure(1)
     hold on
     plot(1:size(I,1), sum(I,2)/1000, FontType, 'Color', 'black', ...
         'LineWidth', 3)
     hold off
 
+    % Plot dynamics of cumulative infections over time
     figure(2)
     hold on
     plot(1:size(I,1), cum_I/1000, FontType, 'Color', 'black', ...
         'LineWidth', 3)
     hold off
 
+    % Plot the time course of the transmission rate
     figure(3)
     subplot(2,2,plotindx(i,1))
     p = plot(beta_stoc);
     set(p, {'Color'}, num2cell(colors,2));
 
+    % Plot the correlation of the transmission rate across the two patches
     figure(3)
     subplot(2,2,plotindx(i,2))
     p = scatter(beta_stoc(:,1), beta_stoc(:,2), 'filled');
@@ -112,6 +118,7 @@ for i = 1:length(overlap)
     
 end
 
+% Add figure labels and titles
 figure(1)
 xlabel('Time (in days)')
 ylabel('Number Currently Infectious (per thousand)')

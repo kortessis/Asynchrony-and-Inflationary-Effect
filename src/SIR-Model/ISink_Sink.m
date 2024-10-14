@@ -1,3 +1,6 @@
+% This is a script to encode the ode for the infectious components of the
+% deterministic SIR model with two patches. It takes constant growth rates.
+
 function dIdt = ISink_Sink(t, I, rhi, rlo, m)
 dIdt(:,1) = zeros(2,1);
 

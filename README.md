@@ -15,7 +15,34 @@ This folder contains the code used to produce figures 2 and 3 of the main text, 
 Code to simulate the source-sink model can be found in the folder "TwoPatch Model". There you will find the code to reproduce figure 4.
 
 ### "SIR-Model" folder.
-Code to simulate the SIR model for a respiratory disease, including the deterministic and stochastic forms, are in the folder titled "SIR-Model". 
+Code to simulate the two-patch SIR model for a respiratory disease, including the deterministic and stochastic forms. The model includes two patches with constant rates of movement. 
+
+In the "src" folder, you will find the following scripts, with short descriptions and dependencies.
+
+Cycle_Growth_Rate.m
+Description: Simulates over movement rates and intervention overlap to calculate metapopulation growth rates in the deterministic version of the model. 
+Dependencies: TwoPatch_Global_r.m and viridis.m
+
+ISink_Sink.m
+Description: Script to encode the ode for the SIR model. Note that this only models the infectious compartment, which is relevant for understanding the average growth rate when the population is completely susceptible.
+Dependencies: None
+
+Stochastic_Two_Patch_Model.m
+Description: This code simulates the stochastic version of the two-patch SIR model. To do so, it discretizes continuous-time and adds Gaussian noise to the transmission rate. 
+Dependencies: viridis.m
+
+supplement_figures.m
+Description: Code that calculates the metapopulation growth rate across different parameter values of the two-patch SIR model. The code here reproduces figures S4 and S5 of the supplement. 
+Dependencies: TwoPatch_Global_r.m and viridis.m
+
+Transmission_Figure.m
+Description: Code that produces a diagram showing how the transmission rate of the SIR model changes over time in the two patches. No simulations here. This just produces a conceptual figure. The figure it produces is Figure S3 of the supplement. 
+Dependencies: None
+
+TwoPatch_Global_r.m
+Description: This code is a function that two values (high and low per-capita growth rates) to calculate a metapopulation growth rate for a two patch metapopulation with periodic growth rates. The SIR model is a specific instance of this more general model. The growth rate calculated here is a regional, low-density growth rate. It gives the metapopulation scale growth rate assuming no density-dependence. 
+Dependencies: ISink_Sink
+
 
 ### "Variance-Partitioning" folder
 Code to recreate figure 1 and to do the variance partitioning are in the folder "Variance-Partitioning"

@@ -34,16 +34,11 @@ else
     end
 end
 
-% Create empty vector to hold infectious density
+% Crea
 Inew = [];
 Tnew = [];
-
-% Initiate population
 I_init = 0.5*ones(1,2);
 
-% Simulate over the burnin cycles + one more to calculate the growth rate
-% This assumes the periodic model reaches a stationary grwoth rate after
-% some number of cycles. 
 for p = 1:burnin_cycles + 1
     
     if p ~= 1
@@ -62,7 +57,6 @@ for p = 1:burnin_cycles + 1
                 init_cond = I(end,:);
             end
     
-            % Simulate dynamics by using the ode solver ode45
             [T,I] = ode45(@(t,I) ...
                 ISink_Sink(t,I,r1(i),r2(i),m), cycle_length*((p-1)+linspace(times1(i,1), times1(i,2), 100)), init_cond);
             Tnew = [Tnew; T];
@@ -89,7 +83,7 @@ for p = 1:burnin_cycles + 1
 
 end
 
-% Calculate the log differece in metatpopulation size across the cycle. 
+ 
 global_r = log(sum(Ifinal(end,:))/sum(Ifinal(1,:)));
 
 end

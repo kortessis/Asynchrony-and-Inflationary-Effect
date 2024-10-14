@@ -103,7 +103,7 @@ for k = 1:length(overlap)
             rhi = beta0 - gamma;
             rlo = beta0*(1-epsilon(j)) - gamma;
             
-            % Calculate the growth rate
+            
             global_r(i,j) = TwoPatch_Global_r(rhi, rlo, m(i), overlap(k), cycle_length);
         end
         disp([k, i/length(m)])
