@@ -1,6 +1,6 @@
 function O = LevinsMetaPop(rho_col, rho_ext, patches, tsteps, deltat, ...
     seed, e, c, init_frac_occ)
-% This is a discrete-time version of Lenski's metapopulation model, with
+% This is a discrete-time version of Levins' metapopulation model, with
 % the flexibility that we can consider correlated extinction and
 % colonization probabilities among patches. 
 

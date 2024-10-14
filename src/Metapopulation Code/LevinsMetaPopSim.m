@@ -103,9 +103,19 @@ cond_mean_occ = ext_time;
 % Loop over different values of rho_ext
 for i = 1:length(rho_ext_vec)
     rho_ext = rho_ext_vec(i);
-    % Loop over different replicate simulations
-    parfor r = 1:reps
 
+    % Loop over different replicate simulations
+    
+    %%%%%%%% Note, this step can take a long time. If using a computer with
+    %%%%%%%% parallel processing, I'd advise that you use the command
+    %%%%%%%% "parfor", which uses the multiple cpus in your computer to run
+    %%%%%%%% multiple versions of the simulations simultaneously. I have
+    %%%%%%%% commented out the line here as it will cause an error if you
+    %%%%%%%% don't have parallel processing set up on your computer. 
+    
+    % parfor r = 1:reps
+
+    for r = 1:reps
         % Write the initial number of patches as the based on the initial
         % occupancy and the number of patches in the landscape.
         N = init_frac_occ*patches;
@@ -130,14 +140,17 @@ for i = 1:length(rho_ext_vec)
             count = count+1;
         end
 
-        % After the while loop has ended
+        % After the while loop has ended, calculate the extinction time. 
         ext_time(i,r) = (find(N==0,1,'first')-1)*deltat;
 
+        % Find the populations sizes where occupancy is non-zero and
+        % calculate the average occupancy.
         Npers = N(N>0);
         cond_mean_occ(i,r) = mean(Npers)/patches;
 
-        ['rho vector ', num2str(i/length(rho_ext_vec)*100), '% done. replicates ',...
-            num2str(r/reps*100), '% done']
+        % This just prints an update on the progress of the for loop.
+        ['rho vector ', num2str(i/length(rho_ext_vec)*100), 
+            '% done. replicates ', num2str(r/reps*100), '% done']
     end
 end
 

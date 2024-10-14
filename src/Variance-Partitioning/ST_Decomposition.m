@@ -1,9 +1,13 @@
-clear; clc;
+% This is a script that generates some spatio-temporally variable data,
+% calculates variance components from the decomposition presented in Box 1
+% and then plots the output.
+clear; clc
 
 %% Model for generating environmental variation in space and time
 x = 0:0.1:1; % Spatial locations
-t = 0:0.1:1;
+t = 0:0.1:1; % Time sampling points
 
+% Time is modeled as a sine wave with amplitude and delay between locations
 a = 2; % Temporal amplitude in fluctuations
 tau = 0.5; % Maximum temporal shift across space 
 b = 2; % Spatial gradient slope
@@ -14,22 +18,34 @@ sigma = 0.25; % Standard deviation of stochastic component
 X = normrnd(0,1,length(x), length(t)); % Random variables
 
 % Generate the fitness factor across space and time
-F = -0.25 + b*x'*ones(size(t))...
-    + a*(1 - x'*ones(size(t))).*sin(2*pi*(ones(size(x'))*t - tau*x'*ones(size(t))))...
+F = -0.25 ...
+    + b*x'*ones(size(t))...
+    + a*(1 - x'*ones(size(t))).*sin(2*pi*(ones(size(x'))*t ...
+    - tau*x'*ones(size(t))))...
     + sigma*X;
 
 %% Decomposing fitness factor variation
+
+% Calculate overal variance in F
 Fvec = reshape(F, [size(F,1)*size(F,2),1]);
+act_varF = mean(Fvec.^2) - mean(Fvec).^2
+
+% Find averages at each location and time point
 Ft = sum(F,1)/length(x);
 Fx = sum(F,2)/length(t);
-varT = mean(Ft.^2) - mean(Ft)^2;
+
+% Calculate the pure spatial and pure temporal components
+varT = mean(Ft.^2) - mean(Ft)^2
 varS = mean(Fx.^2) - mean(Fx)^2
+
+% Calculate the spatiotemporal variance
 varFx = sum(F.^2,2)/length(t) - (sum(F,2)/length(t)).^2;
 varST = mean(varFx) - varT
-act_varF = mean(Fvec.^2) - mean(Fvec).^2
+
+% Check to see if there is any error in the calculations. 
 theo_total = varS + varT + varST;
 error = (theo_total - act_varF)/act_varF
-
+% Only errors are in the rounding error
 
 %% Visualizing the variation
 tl = tiledlayout('flow');
