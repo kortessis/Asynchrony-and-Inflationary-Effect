@@ -82,3 +82,7 @@ Dependencies: viridis.m
 
 2. **viridis.m**
 Description: a colormap. Dependencies: None 
+
+## Citation
+This material has been archived at Zenodo. If you use any of the material here, please use the following DOI to attribute the work. 
+[![DOI](https://zenodo.org/badge/651155359.svg)](https://doi.org/10.5281/zenodo.13928923)
