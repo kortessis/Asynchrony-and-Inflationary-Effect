@@ -65,7 +65,7 @@ for i = 1:length(sigmar)
     
     % Plot population trajectories
     semilogy(1:gen, N, 'Color', colors(i,:), 'LineWidth', 2);
-    % Calculate population size averages
+    % Calculate population si
     arthN(i) = mean(N);
     geomN(i) = exp(mean(log(N)));
 end
@@ -75,7 +75,7 @@ hold off;
 ax = gca; ax.FontSize = 20;
 ax.FontName = 'Times New Roman';
 
-% Plot results
+
 subplot(1,3,3)
 
 semilogy(0,1,'o', 'Color', 'black', 'MarkerFaceColor', 'black', ...

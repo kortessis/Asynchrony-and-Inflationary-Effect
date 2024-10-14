@@ -12,7 +12,16 @@ The repository has two main folders, `src` and `fig`, that contain, respectively
 This folder contains the code used to produce figures 2 and 3 of the main text, and the code associated with the reaction norm approach described in the supplement. This code relates to a finite-patch version of the Levins metapopulation model where extinction events have some correlation, which we call \rho<sub>E</sub>. The basic model simulation is done in function titled "LevinsMetaPop.m", which is used 
 
 ### "TwoPatch Model" folder.
-Code to simulate the source-sink model can be found in the folder "TwoPatch Model". There you will find the code to reproduce figure 4.
+Code to simulate the source-sink model can be found in the folder "TwoPatch Model". In the src folder, you will find two code files:
+
+VarianceEffect.m
+Description: A simulation of the source-sink model for difference variability in growth rates. This model has the same environmental process and illustrates how variation in the sink can boost population sizes on average. It also calculates and plots the geometric and arithmetic mean population sizes for each environmental variance. It produces figure 4 of the main text.
+Dependencies: viridis.m
+
+viridis.m
+Description: A colormap
+Dependencies: None 
+
 
 ### "SIR-Model" folder.
 Code to simulate the two-patch SIR model for a respiratory disease, including the deterministic and stochastic forms. The model includes two patches with constant rates of movement. 
@@ -42,6 +51,10 @@ Dependencies: None
 TwoPatch_Global_r.m
 Description: This code is a function that two values (high and low per-capita growth rates) to calculate a metapopulation growth rate for a two patch metapopulation with periodic growth rates. The SIR model is a specific instance of this more general model. The growth rate calculated here is a regional, low-density growth rate. It gives the metapopulation scale growth rate assuming no density-dependence. 
 Dependencies: ISink_Sink
+
+viridis.m
+Description: the viridis colormap function.
+Dependecies: None
 
 
 ### "Variance-Partitioning" folder
