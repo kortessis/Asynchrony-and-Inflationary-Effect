@@ -134,15 +134,11 @@ for i = 1:length(overlap)
 
     figure(4)
     subplot(1,2,i)
-    plot(1:size(I,1), FDcov, 'Color', 'black', ...
+    plot(1:size(I,1), FDcov, FontType, 'Color', 'black', ...
         'LineWidth', 3)
     hold on;
-    yline(0)
-    yline(IE(i), ':', 'LineWidth', 3);
-    ylim([-0.3, 0.6])
+    yline(IE(i));
     hold off;
-    text(size(I,1)/4, 0.5, ['Inflationary Effect = ', num2str(IE(i))], ...
-        'FontName', 'Times New Roman', 'FontSize', 20)
 end
 
 % Add figure labels and titles
@@ -180,11 +176,11 @@ figure(4)
 subplot(1,2,1)
 xlabel('Time')
 ylabel('Fitness-Density Covariance')
-title({'Dynamics of Fitness Density', 'Covariance with Complete Overlap'})
+title('Dynamics of Fitness Density Covariance with Complete Overlap')
 set(gca, {'FontSize', 'FontName'}, {20, 'Times New Roman'})
 
-subplot(1,2,2)
+subplot(1,2,1)
 xlabel('Time')
 ylabel('Fitness-Density Covariance')
-title({'Dynamics of Fitness Density', 'Covariance with Overlap = 0.5'})
+title('Dynamics of Fitness Density Covariance with Overlap = 0.5')
 set(gca, {'FontSize', 'FontName'}, {20, 'Times New Roman'})
